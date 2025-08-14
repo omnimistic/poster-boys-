@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Poster Store</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">Poster Store</div>
+    <button id="openCart" class="cart-btn" aria-label="Open cart">
+      🛒 <span id="cartCount">0</span>
+    </button>
+  </header>
+
+  <main class="container">
+    <div id="grid" class="grid"></div>
+  </main>
+
+  <!-- Poster Modal -->
+  <div id="modal" class="modal" aria-hidden="true">
+    <div class="modal__panel" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <button class="modal__close" id="closeModal" aria-label="Close">✕</button>
+      <div class="modal__media">
+        <img id="modalImg" alt="" />
+      </div>
+      <div class="modal__content">
+        <h2 id="modalTitle"></h2>
+        <p class="muted" id="modalFilename"></p>
+        <div class="meta">
+          <div><strong>Price:</strong> ₹<span id="modalPrice"></span></div>
+          <div><strong>Dimensions:</strong> <span id="modalDims">—</span></div>
+        </div>
+        <div class="actions">
+          <button id="addToCart" class="btn primary">Add to Cart</button>
+          <button id="viewCart" class="btn">View Cart</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Cart Drawer -->
+  <aside id="cart" class="drawer" aria-hidden="true">
+    <header class="drawer__top">
+      <h3>Your Cart</h3>
+      <button id="closeCart" class="icon-btn" aria-label="Close cart">✕</button>
+    </header>
+    <ul id="cartItems" class="cart-list"></ul>
+    <footer class="drawer__bottom">
+      <div class="total">
+        <span>Total</span>
+        <strong>₹<span id="cartTotal">0</span></strong>
+      </div>
+      <button id="checkout" class="btn primary">Checkout (simulate)</button>
+    </footer>
+  </aside>
+
+  <!-- Drawer backdrop -->
+  <div id="backdrop" class="backdrop" aria-hidden="true"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
