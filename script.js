@@ -22,14 +22,13 @@ const files = [
 
 // Basic price map (edit as you like). If a file not in map → default 199.
 const priceMap = {
-  "johnwick4.jpg": 249,
-  "spiderman.jpg": 229,
-  "spiderman retro.jpg": 239,
-  "spiderman old.jpg": 219,
-  "ferrari x anime.jpg": 249,
-  "star wars void.jpg": 259
+  "johnwick4.jpg": 200,
+  "spiderman.jpg": 200,
+  "spiderman retro.jpg": 200,
+  "spiderman old.jpg": 200,
+  "star wars void.jpg": 200
 };
-const DEFAULT_PRICE = 199;
+const DEFAULT_PRICE = 175;
 
 // Build product objects
 const products = files.map((f, i) => ({
@@ -262,7 +261,7 @@ Payment Method: Pay on Delivery`;
 
   // Encode for mailto
   const encodedBody = encodeURIComponent(emailBody);
-  const mailtoLink = `mailto:prasparadise@gmail.com?subject=Poster Order&body=${encodedBody}`;
+  const mailtoLink = `mailto:azlaanali4596@gmail.com?subject=Poster Order&body=${encodedBody}`;
 
   // Open email client
   window.location.href = mailtoLink;
