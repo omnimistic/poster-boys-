@@ -218,20 +218,62 @@ function restoreCart(){
   }catch{ cart = []; }
 }
 
-// --- Checkout (simulate) ---
+
 checkoutBtn.addEventListener("click", () => {
-  if (cart.length === 0){ alert("Your cart is empty."); return; }
-  const summary = cart.map(c=>{
-    const p = products.find(x=>x.id===c.id);
-    return `${p.title} × ${c.qty} = ₹${p.price*c.qty}`;
-  }).join("\n");
-  const total = cart.reduce((t,c)=> t + (products.find(x=>x.id===c.id).price * c.qty), 0);
-  alert(`(Simulation)\n\n${summary}\n\nTotal: ₹${total}\n\nNext step: send this payload to your backend / payment gateway.`);
+  if (cart.length === 0) {
+    alert("Your cart is empty.");
+    return;
+  }
+
+  // Prompt for customer details
+  const customerName = prompt("Enter your full name:");
+  const address = prompt("Enter your delivery address:");
+
+  if (!customerName || !address) {
+    alert("Name and address are required to place an order.");
+    return;
+  }
+
+  // Build order summary
+  let orderDetails = "";
+  let total = 0;
+  cart.forEach(c => {
+    const p = products.find(x => x.id === c.id);
+    const lineTotal = p.price * c.qty;
+    total += lineTotal;
+    orderDetails += `${p.title} × ${c.qty} - ₹${lineTotal}\n`;
+  });
+
+  // Warning + formatted message
+  const emailBody = 
+`⚠ DO NOT edit the contents of this email. It contains encrypted order data. Just press SEND to confirm your order. ⚠
+
+Customer Name: ${customerName}
+
+Bought Items:
+${orderDetails}
+
+Total Price: ₹${total}
+
+Address:
+${address}
+
+Payment Method: Pay on Delivery`;
+
+  // Encode for mailto
+  const encodedBody = encodeURIComponent(emailBody);
+  const mailtoLink = `mailto:prasparadise@gmail.com?subject=Poster Order&body=${encodedBody}`;
+
+  // Open email client
+  window.location.href = mailtoLink;
+
+  // Optional: clear cart after checkout
   cart = [];
   persistCart();
   updateCartBadge();
   renderCart();
 });
+
 
 // --- Helpers ---
 function prettify(fileName){
