@@ -1,4 +1,4 @@
-// --- Your actual files in posters/ (spaces OK) ---
+// --- Your actual files in posters/ ---
 const files = [
   "azlaan bhai pfp.jpg",
   "dune spice lord.jpg",
@@ -20,7 +20,7 @@ const files = [
   "unreleased rogue.jpg"
 ];
 
-// Basic price map (edit as you like). If a file not in map → default 199.
+// Basic price map (edit as you like). If a file not in map then default to 175.
 const priceMap = {
   "johnwick4.jpg": 200,
   "spiderman.jpg": 200,
