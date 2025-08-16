@@ -266,7 +266,7 @@ Payment Method: Pay on Delivery`;
   // Open email client
   window.location.href = mailtoLink;
 
-  // Optional: clear cart after checkout
+  // clear the cart after checkout
   cart = [];
   persistCart();
   updateCartBadge();
